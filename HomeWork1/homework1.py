@@ -34,7 +34,7 @@ class Library:
     def __init__(self, item_collections: list["LibraryItem"]) -> None:
         self.item_collections = item_collections
 
-    def add_item(self, new_item: LibraryItem) -> None:
+    def add_item(self, new_item: "LibraryItem") -> None:
         if not self.check_if_item_in_library(new_item):
             print(f"Adding Library Item {new_item.title} to Library")
             self.item_collections.append(new_item)
@@ -46,17 +46,17 @@ class Library:
             print(f"Removing Library Item {item_to_remove.title} from Library")
             self.item_collections.remove(item_to_remove)
         else:
-            raise AttributeError(f"Item {item_to_remove.title}, not present in Library")
+            raise AttributeError(f"Item {item_to_remove.title}, is not present in Library!")
 
     def borrow_book(self, book: "Book") -> None:
         if self.check_if_item_in_library(book):
             if book.is_borrowed == False:
                 book.is_borrowed = True
             else:
-                raise ValueError(f"Book {book.title}  is not borrowed!")
+                raise AttributeError(f"Book {book.title} is already borrowed!")
             print(f"You have borrowed a book {book.title}")
         else:
-            raise ValueError(f"Book {book.title} is not present in Library!")
+            raise AttributeError(f"Item {book.title}, is not present in Library!")
 
     def return_book(self, book: "Book") -> None:
         if self.check_if_item_in_library(book):
@@ -64,9 +64,9 @@ class Library:
                 book.is_borrowed = False
                 print(f"You returned a book {book.title}")
             else:
-                raise ValueError(f"Book {book.title}  is not borrowed!")
+                raise AttributeError(f"Book {book.title}  is not borrowed!")
         else:
-            raise ValueError(f"Book {book.title}  is not present in Library!")
+            raise AttributeError(f"Item {book.title}, is not present in Library!")
 
     def display_available_books(self) -> None:
         for item in self.item_collections:
@@ -82,40 +82,40 @@ class Library:
 
 
 
-# Creation of objects
-book1 = Book("Harry Potter", "Jk", 2001, False, "good")
-book2 = Book("Golden Horde", "Mehmement", 1005, True, "bad")
-book3 = Book("Clean Code", "Bob Martin", 2012, True, "good")
-library_item_1 = LibraryItem("Journal", "Vogue", 2003)
-library_item_2 = LibraryItem("Computer", "Hp", 2022)
-
-# Creation of list of all objects to pass to Library class
-Library_items_list = [book1, book2, book3, library_item_1, library_item_2]
-
-# Creation of Library class instance and passing our list
-library_instance = Library(Library_items_list)
-
-# Created one more book to add to add_item function
-book4 = Book("Azbuka", "Life", 2000, False, "good")
-
-# Adding Book object to list
-library_instance.add_item(book4)
-
-# Removing Book object from list
-library_instance.remove_item(book3)
-
-# Borrowing and returning books and printing available books as result
-library_instance.display_available_books()
-library_instance.borrow_book(book1)
-library_instance.display_available_books()
-library_instance.return_book(book2)
-library_instance.display_available_books()
-
-
-# -- Block of the code that shows handling of the passing wrong information and operation --
-
-# book5 = Book("Bad Book", "Devil", 1, False, "good")
-# library_instance.remove_item(book5)
-# library_instance.add_item(book5)
-# # library_instance.return_book(book5)
-# book5 = Book("Bad Book2", "Devil", -5, False, "good")
+# # Creation of objects
+# book1 = Book("Harry Potter", "Jk", 2001, False, "good")
+# book2 = Book("Golden Horde", "Mehmement", 1005, True, "bad")
+# book3 = Book("Clean Code", "Bob Martin", 2012, True, "good")
+# library_item_1 = LibraryItem("Journal", "Vogue", 2003)
+# library_item_2 = LibraryItem("Computer", "Hp", 2022)
+#
+# # Creation of list of all objects to pass to Library class
+# Library_items_list = [book1, book2, book3, library_item_1, library_item_2]
+#
+# # Creation of Library class instance and passing our list
+# library_instance = Library(Library_items_list)
+#
+# # Created one more book to add to add_item function
+# book4 = Book("Azbuka", "Life", 2000, False, "good")
+#
+# # Adding Book object to list
+# library_instance.add_item(book4)
+#
+# # Removing Book object from list
+# library_instance.remove_item(book3)
+#
+# # Borrowing and returning books and printing available books as result
+# library_instance.display_available_books()
+# library_instance.borrow_book(book1)
+# library_instance.display_available_books()
+# library_instance.return_book(book2)
+# library_instance.display_available_books()
+#
+#
+# # -- Block of the code that shows handling of the passing wrong information and operation --
+#
+# # book5 = Book("Bad Book", "Devil", 1, False, "good")
+# # library_instance.remove_item(book5)
+# # library_instance.add_item(book5)
+# # # library_instance.return_book(book5)
+# # book5 = Book("Bad Book2", "Devil", -5, False, "good")

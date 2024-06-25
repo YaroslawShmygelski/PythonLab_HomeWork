@@ -1,6 +1,6 @@
 import pytest
 
-from HomeWork1.Classes import Book, Library, LibraryItem
+from HomeWork1.classes import Book, Library, LibraryItem
 
 
 @pytest.fixture(scope="function")

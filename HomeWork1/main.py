@@ -1,4 +1,4 @@
-from HomeWork1.Classes import Book, Library, LibraryItem
+from HomeWork1.classes import Book, Library, LibraryItem
 
 if __name__ == '__main__':
 # Creation of objects

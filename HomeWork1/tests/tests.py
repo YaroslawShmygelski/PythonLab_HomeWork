@@ -1,6 +1,6 @@
 import pytest
 
-from HomeWork1.homework1 import Book, Library, LibraryItem
+from HomeWork1.Classes import Book, Library, LibraryItem
 
 
 @pytest.fixture(scope="function")
@@ -65,9 +65,11 @@ def test_borrow_unpresented_book(book_instance: "Book", lib_instance: "Library")
         lib_instance.borrow_book(book_instance)
 
 
-def borrow_not_borrowed_book(not_borrowed_book_instance: "Book", lib_instance: "Library") -> None:
+def test_borrow_not_borrowed_book(not_borrowed_book_instance: "Book", lib_instance: "Library") -> None:
     lib_instance.add_item(not_borrowed_book_instance)
+    assert not lib_instance.check_if_book_borrowed(not_borrowed_book_instance)
     lib_instance.borrow_book(not_borrowed_book_instance)
+    assert lib_instance.check_if_book_borrowed(not_borrowed_book_instance)
 
 
 def test_return_not_borrowed_book(not_borrowed_book_instance: "Book", lib_instance: "Library") -> None:
@@ -83,4 +85,6 @@ def test_return_unpresented_book(book_instance: "Book", lib_instance: "Library")
 
 def test_return_borrowed_book(book_instance: "Book", lib_instance: "Library") -> None:
     lib_instance.add_item(book_instance)
+    assert lib_instance.check_if_book_borrowed(book_instance)
     lib_instance.return_book(book_instance)
+    assert not lib_instance.check_if_book_borrowed(book_instance)

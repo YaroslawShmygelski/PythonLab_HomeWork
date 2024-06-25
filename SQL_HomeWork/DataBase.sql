@@ -1,0 +1,1 @@
+CREATE TABLE test(test_val VARCHAR(50) )

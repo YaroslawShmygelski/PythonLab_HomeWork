@@ -6,9 +6,11 @@ class LibraryItem:
         self.publication_year = publication_year
 
     def display_info(self) -> None:
-        print(f"Title: {self.title}\n"
-              f"Author: {self.author}\n"
-              f"Publication Year: {self.publication_year}")
+        print(
+            f"Title: {self.title}\n"
+            f"Author: {self.author}\n"
+            f"Publication Year: {self.publication_year}"
+        )
 
     @classmethod
     def verify_publication_year(cls, year: int) -> None:
@@ -18,21 +20,23 @@ class LibraryItem:
 
 class Book(LibraryItem):
     def __init__(self, title: str, author: str, publication_year: int,
-                 is_borrowed: bool, book_condition: str) -> None:
-
+                 is_borrowed: bool, book_condition: str
+                 ) -> None:
         super().__init__(title, author, publication_year)
         self.is_borrowed = is_borrowed
         self.book_condition = book_condition
 
     def display_info(self) -> None:
         super().display_info()
-        print(f"Is Book Borrowed? {self.is_borrowed}\n"
-              f"Book Condition: {self.book_condition}")
+        print(
+            f"Is Book Borrowed? {self.is_borrowed}\n"
+            f"Book Condition: {self.book_condition}"
+        )
 
 
 class Library:
-    def __init__(self, item_collections: list["LibraryItem"]) -> None:
-        self.item_collections = item_collections
+    def __init__(self, item_collections: list["LibraryItem"] | None = None) -> None:
+        self.item_collections = [] if item_collections is None else item_collections
 
     def add_item(self, new_item: "LibraryItem") -> None:
         if not self.check_if_item_in_library(new_item):
@@ -60,7 +64,7 @@ class Library:
 
     def return_book(self, book: "Book") -> None:
         if self.check_if_item_in_library(book):
-            if book.is_borrowed==True:
+            if book.is_borrowed == True:
                 book.is_borrowed = False
                 print(f"You returned a book {book.title}")
             else:
@@ -80,42 +84,9 @@ class Library:
         else:
             return False
 
-
-
-# # Creation of objects
-# book1 = Book("Harry Potter", "Jk", 2001, False, "good")
-# book2 = Book("Golden Horde", "Mehmement", 1005, True, "bad")
-# book3 = Book("Clean Code", "Bob Martin", 2012, True, "good")
-# library_item_1 = LibraryItem("Journal", "Vogue", 2003)
-# library_item_2 = LibraryItem("Computer", "Hp", 2022)
-#
-# # Creation of list of all objects to pass to Library class
-# Library_items_list = [book1, book2, book3, library_item_1, library_item_2]
-#
-# # Creation of Library class instance and passing our list
-# library_instance = Library(Library_items_list)
-#
-# # Created one more book to add to add_item function
-# book4 = Book("Azbuka", "Life", 2000, False, "good")
-#
-# # Adding Book object to list
-# library_instance.add_item(book4)
-#
-# # Removing Book object from list
-# library_instance.remove_item(book3)
-#
-# # Borrowing and returning books and printing available books as result
-# library_instance.display_available_books()
-# library_instance.borrow_book(book1)
-# library_instance.display_available_books()
-# library_instance.return_book(book2)
-# library_instance.display_available_books()
-#
-#
-# # -- Block of the code that shows handling of the passing wrong information and operation --
-#
-# # book5 = Book("Bad Book", "Devil", 1, False, "good")
-# # library_instance.remove_item(book5)
-# # library_instance.add_item(book5)
-# # # library_instance.return_book(book5)
-# # book5 = Book("Bad Book2", "Devil", -5, False, "good")
+    def check_if_book_borrowed(self, book: "Book") -> bool:
+        if self.check_if_item_in_library(book):
+            if book.is_borrowed:
+                return True
+            else:
+                return False

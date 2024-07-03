@@ -1,11 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"
 </head>
 <body>
-{%block content%}
+<div id="header">
+    <ul id="nav-elements">
+        <li><a href="{% url 'blog:home' %}">Home</a></li>
+        <li><a href="#"> Login</a></li>
+        <li><a href="#"> About</a></li>
+        <li><a href="#"> Registration</a></li>
+    </ul>
+</div>
+
+{% block content %}
 {% endblock %}
+
+<div id="footer">
+    <div class="copyright">
+        <p>Copyright © 2024 Yaroslav Shmyhelskyi All rights reserved.</p>
+    </div>
+</div>
+
+
+
 </body>
 </html>

@@ -14,3 +14,6 @@ class HomePageView(ListView):
     template_name = 'blog/home.html'
 
 
+class DetailPageView(DetailView):
+    model = Post
+    context_object_name = 'post'

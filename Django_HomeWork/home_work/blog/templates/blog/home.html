@@ -15,7 +15,10 @@
                     {% endif %}
                 </div>
                 <div class="post-content">
-                    <p>{{ post.content }}</p>
+                    <p>{{ post.content|truncatewords_html:5 }}</p>
+                </div>
+                <div class="post-link">
+                    <a href="{{ post.get_absolute_url }}"><button> Read More...</button></a>
                 </div>
             </div>
         {% endfor %}

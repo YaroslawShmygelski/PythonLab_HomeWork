@@ -2,5 +2,24 @@
 {% load static %}
 
 {% block content %}
+<div class="detail-post">
+    <div class="detail-post-title">
+        {{ post.title }}
+    </div>
+    <div class="detail-post-body">
+        <div class="detail-post-image">
+            {% if post.photo %}
+                <img src="{{ post.photo.url }}">
+            {% else %}
+                <img src="{% static 'images/no-image.jpg' %}">
+            {% endif %}
+        </div>
+        <div class="detail-post-content">
+            {{ post.content}}
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}

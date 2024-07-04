@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 <div id="header">
     <ul id="nav-elements">
         <li><a href="{% url 'blog:home' %}">Home</a></li>
-        <li><a href="#"> Login</a></li>
-        <li><a href="#"> About</a></li>
-        <li><a href="#"> Registration</a></li>
+        <li><a href="{% url 'blog:create-post' %}"> Create Post</a></li>
+        <li><a href="#"> Registration </a> |<a href="#"> Login</a></li>
     </ul>
 </div>
 

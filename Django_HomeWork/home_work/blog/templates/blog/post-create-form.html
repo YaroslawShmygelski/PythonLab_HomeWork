@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load  static %}
+{% block content %}
+    <div class="form-field">
+        <form class="create-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"> Save </button>
+        </form>
+        {% if form.errors %}
+            <div class="form-errors">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

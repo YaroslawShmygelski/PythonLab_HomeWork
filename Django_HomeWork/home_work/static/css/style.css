@@ -600,3 +600,78 @@ table {
 .detail-post-content {
     flex: 2;
 }
+
+.form-field{
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+
+.create-form {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.09);;
+}
+
+
+.create-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.create-form .content-input,
+.create-form .title-input{
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #555;
+    box-sizing: border-box;
+}
+
+
+.create-form input:focus,
+.create-form textarea:focus {
+    border-color: #ff6c44;
+    outline: none;
+    box-shadow: 0 0 5px rgb(131, 37, 6);
+}
+
+
+.create-form .file-chooser-input{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+
+.create-form button {
+     display: block;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 15px auto;
+    padding: 10px 25px;
+    background-color: #ff6c44;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s ease;
+    color: #f9f9f9;
+}
+
+.create-form button:hover {
+    background-color: #302c2c;
+    color: #f9f9f9;
+}

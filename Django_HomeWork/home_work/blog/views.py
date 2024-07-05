@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
-from django.urls import reverse, reverse_lazy
-from django.utils import timezone
-from django.views.generic import DetailView, CreateView, FormView
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, FormView
 from django.views.generic.list import ListView
 
-from .forms import PostForm
+from .forms import PostForm, UserLoginForm
 from .models import Post
 
 
@@ -15,6 +16,7 @@ class HomePageView(ListView):
     model = Post
     context_object_name = 'posts'
     template_name = 'blog/home.html'
+
 
 class ProductDetailView(DetailView):
     model = Post
@@ -31,3 +33,14 @@ class CreatePostView(FormView):
         form.instance.author_id = self.request.user.id
         form.save()
         return super().form_valid(form)
+
+
+class UserLoginView(LoginView):
+    template_name = 'blog/user-registration.html'
+    form_class = UserLoginForm
+    success_url = reverse_lazy("blog:home")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("blog:home")

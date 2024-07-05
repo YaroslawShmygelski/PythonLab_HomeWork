@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+
+from django.urls import reverse_lazy
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -43,7 +45,6 @@ INSTALLED_APPS = [
 
     # Site apps
     'blog'
-
 
 ]
 
@@ -130,10 +131,11 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static/'
 ]
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "blog.User"
+
+LOGIN_REDIRECT_URL = reverse_lazy("blog:home")

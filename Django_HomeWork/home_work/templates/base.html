@@ -11,7 +11,14 @@
     <ul id="nav-elements">
         <li><a href="{% url 'blog:home' %}">Home</a></li>
         <li><a href="{% url 'blog:create-post' %}"> Create Post</a></li>
-        <li><a href="#"> Registration </a> |<a href="#"> Login</a></li>
+        {% if request.user.is_authenticated %}
+            <li><a href="#"> {{  user.get_username }} </a> |
+                <a href="{% url 'blog:logout' %}"> Logout</a></li>
+        {% else %}
+            <li><a href="#"> Registration </a> |
+                <a href="{% url 'blog:login' %}"> Login</a></li>
+        {% endif %}
+
     </ul>
 </div>
 
@@ -23,7 +30,6 @@
         <p>Copyright © 2024 Yaroslav Shmyhelskyi All rights reserved.</p>
     </div>
 </div>
-
 
 
 </body>

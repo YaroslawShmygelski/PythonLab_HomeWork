@@ -1,6 +1,8 @@
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import AuthenticationForm
 from django.forms import ModelForm, TextInput, Textarea, FileInput
 
-from .models import Post
+from .models import Post, User
 
 
 class PostForm(ModelForm):
@@ -24,3 +26,12 @@ class PostForm(ModelForm):
                        }
             )
         }
+
+
+class UserLoginForm(AuthenticationForm):
+    class Meta:
+        model = get_user_model()
+        fields =['username', 'password']
+
+
+

@@ -22,14 +22,27 @@
                         <button> Read More...</button>
                     </a>
                 </div>
+                <div class="post-data">
+
+                    Last Changed: {{ post.updated_at }}
+                    Author: {{ post.author }}
+                    {% if post.author.id == user.id %}
+                        <a href="{% url 'blog:update-post' post.slug %}">
+                            <button class="edit-button">
+                                Edit
+                            </button>
+                        </a>
+                    {% endif %}
+                </div>
             </div>
+            
         {% endfor %}
     </div>
     <div class="pagination">
         {% if page_obj.has_previous %}
             <a href="?page=1">
                 <div class="page">
-                     1
+                    1
                 </div>
             </a>
             {% if page_obj.number|add:-1 != 1 %}

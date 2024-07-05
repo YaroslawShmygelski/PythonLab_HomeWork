@@ -2,11 +2,16 @@
 {% load static %}
 {% block content %}
     <div class="login-field">
-        <form class="create-form login-form" method="post">
+        <form class="create-form login-form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{   form.as_p }}
             <button type="submit" value="Save">Save</button>
         </form>
+       {% if form.errors %}
+            <div class="form-errors">
+                {{ form.errors }}
+            </div>
+        {% endif %}
     
     </div>
 {% endblock %}

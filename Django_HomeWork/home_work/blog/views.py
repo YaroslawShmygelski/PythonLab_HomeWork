@@ -2,7 +2,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, FormView, CreateView
+from django.views.generic import DetailView, FormView, CreateView, UpdateView
 from django.views.generic.list import ListView
 
 from .forms import PostForm, UserLoginForm, UserRegisterForm
@@ -33,6 +33,13 @@ class CreatePostView(FormView):
         form.instance.author_id = self.request.user.id
         form.save()
         return super().form_valid(form)
+
+
+class UpdatePostView(UpdateView):
+    model = Post
+    template_name = 'blog/post-create-form.html'
+    fields = ['title', 'content', 'photo']
+    success_url = reverse_lazy('blog:home')
 
 
 class UserLoginView(LoginView):

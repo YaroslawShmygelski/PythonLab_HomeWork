@@ -7,17 +7,31 @@
         {{ post.title }}
     </div>
     <div class="detail-post-body">
-        <div class="detail-post-image">
-            {% if post.photo %}
-                <img src="{{ post.photo.url }}">
-            {% else %}
-                <img src="{% static 'images/no-image.jpg' %}">
-            {% endif %}
+        <div class="detail-post-meta">
+            <div class="detail-post-author">
+                Author: {{ post.author }}
+            </div>
+            <div class="detail-post-image">
+                {% if post.photo %}
+                    <img src="{{ post.photo.url }}">
+                {% else %}
+                    <img src="{% static 'images/no-image.jpg' %}">
+                {% endif %}
+            </div>
         </div>
         <div class="detail-post-content">
-            {{ post.content}}
+            {{ post.content }}
         </div>
     </div>
+    {% if post.author.id == user.id %}
+        <div class="detail-post-edit">
+            <a href="{% url 'blog:update-post' post.slug %}">
+                <button class="detail-post-edit-button">
+                    Edit
+                </button>
+            </a>
+        </div>
+    {% endif %}
 </div>
 
 

@@ -18,9 +18,44 @@
                     <p>{{ post.content|truncatewords_html:5 }}</p>
                 </div>
                 <div class="post-link">
-                    <a href="{{ post.get_absolute_url }}"><button> Read More...</button></a>
+                    <a href="{{ post.get_absolute_url }}">
+                        <button> Read More...</button>
+                    </a>
                 </div>
             </div>
         {% endfor %}
+    </div>
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">
+                <div class="page">
+                     1
+                </div>
+            </a>
+            {% if page_obj.number|add:-1 != 1 %}
+                <a href="?page={{ page_obj.previous_page_number }}">
+                    <div class="page">
+                        <
+                    </div>
+                </a>
+            {% endif %}
+        {% endif %}
+        <div class="page current">
+            {{ page_obj.number }}
+        </div>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">
+                <div class="page">
+                    >
+                </div>
+            </a>
+            {% if page_obj.number|add:1 != page_obj.paginator.num_pages %}
+                <a href="?page={{ page_obj.paginator.num_pages }}">
+                    <div class="page">
+                        {{ page_obj.paginator.num_pages }}
+                    </div>
+                </a>
+            {% endif %}
+        {% endif %}
     </div>
 {% endblock %}

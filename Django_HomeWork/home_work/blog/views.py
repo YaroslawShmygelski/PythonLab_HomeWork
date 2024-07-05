@@ -11,10 +11,10 @@ from .models import Post
 # Create your views here.
 
 class HomePageView(ListView):
+    paginate_by = 4
     model = Post
     context_object_name = 'posts'
     template_name = 'blog/home.html'
-
 
 class ProductDetailView(DetailView):
     model = Post

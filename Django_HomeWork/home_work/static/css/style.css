@@ -450,14 +450,11 @@ table {
 
 
 #footer {
-    padding: 30px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    padding: 50px;
     background-color: #302c2c;
     color: white;
     text-align: center;
+    margin-top: auto; /* Прижимает футер к нижнему краю основного контейнера */
 }
 
 #footer .copyright {
@@ -533,10 +530,12 @@ table {
     height: 100%;
     object-fit: cover;
 }
-.post-link{
+
+.post-link {
     width: 25%;
 }
-.post-link button{
+
+.post-link button {
     text-decoration: none;
     text-align: center;
     width: 100%;
@@ -551,19 +550,20 @@ table {
     transition: 0.2s ease-in-out;
 }
 
-.post-link  a{
+.post-link a {
     text-decoration: none;
     color: #302c2c;
     transition: 0.2s ease-in-out;
 }
+
 .post-link button:hover {
     background-color: #302c2c;
     color: white;
 }
-.post-link button:hover a{
+
+.post-link button:hover a {
     color: white;
 }
-
 
 
 .detail-post {
@@ -601,7 +601,7 @@ table {
     flex: 2;
 }
 
-.form-field{
+.form-field {
     padding: 30px;
     display: flex;
     align-items: center;
@@ -629,7 +629,7 @@ table {
 
 
 .create-form .content-input,
-.create-form .title-input{
+.create-form .title-input {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 15px;
@@ -649,14 +649,14 @@ table {
 }
 
 
-.create-form .file-chooser-input{
+.create-form .file-chooser-input {
     margin-top: 10px;
     margin-bottom: 15px;
 }
 
 
 .create-form button {
-     display: block;
+    display: block;
     text-align: center;
     font-size: 24px;
     font-weight: 600;
@@ -674,4 +674,41 @@ table {
 .create-form button:hover {
     background-color: #302c2c;
     color: #f9f9f9;
+}
+
+.pagination{
+    text-align: center;
+    padding: 30px;
+    text-decoration: none;
+}
+.pagination a{
+    text-decoration: none;
+}
+.page {
+    display: inline-block;
+    width: 3%;
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #302c2c;
+    background-color: #ff6c44;
+    border-radius: 7px;
+    font-weight: 600;
+    color: #302c2c;
+    font-size: 20px;
+    transition: 0.2s ease-in-out;
+}
+.page.current{
+      background-color: #f9f9f9;
+}
+.page.current:hover{
+      background-color: #f9f9f9;
+    color: #302c2c;
+
+}
+
+.page:hover {
+    background-color: #302c2c;
+    color: #f9f9f9;
+
 }

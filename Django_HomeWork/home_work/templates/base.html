@@ -15,7 +15,7 @@
             <li><a href="#"> {{  user.get_username }} </a> |
                 <a href="{% url 'blog:logout' %}"> Logout</a></li>
         {% else %}
-            <li><a href="#"> Registration </a> |
+            <li><a href="{% url 'blog:register' %}"> Registration </a> |
                 <a href="{% url 'blog:login' %}"> Login</a></li>
         {% endif %}
 

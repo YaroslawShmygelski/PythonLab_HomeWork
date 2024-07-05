@@ -661,7 +661,7 @@ table {
     text-align: center;
     font-size: 24px;
     font-weight: 600;
-    margin: 15px auto;
+    margin: 30px auto;
     padding: 10px 25px;
     background-color: #ff6c44;
     border: none;
@@ -713,6 +713,22 @@ table {
     color: #f9f9f9;
 }
 
-.login-field{
-    padding: 20px 20px 500px 20px;
+.login-form {
+    display: block;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 500px;
+  background-color: #f9f9f9;
+  margin-top: 100px;
+
 }
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+

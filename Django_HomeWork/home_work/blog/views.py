@@ -2,10 +2,10 @@ from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, FormView
+from django.views.generic import DetailView, FormView, CreateView
 from django.views.generic.list import ListView
 
-from .forms import PostForm, UserLoginForm
+from .forms import PostForm, UserLoginForm, UserRegisterForm
 from .models import Post
 
 
@@ -36,7 +36,7 @@ class CreatePostView(FormView):
 
 
 class UserLoginView(LoginView):
-    template_name = 'blog/user-registration.html'
+    template_name = 'blog/user-login.html'
     form_class = UserLoginForm
     success_url = reverse_lazy("blog:home")
 
@@ -44,3 +44,9 @@ class UserLoginView(LoginView):
 def logout_view(request):
     logout(request)
     return redirect("blog:home")
+
+
+class UserCreationView(CreateView):
+    form_class = UserRegisterForm
+    template_name = 'blog/user-registration.html'
+    success_url = reverse_lazy('blog:login')
